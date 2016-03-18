@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- My own CSS -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- My own JavaScript -->
+        <script src="js/scripts.js"></script>
+        <!-- JQuery -->
+        <script src="js/jquery-2.2.1.min.js"></script>
+
+		<title>Methinks it is like a weasel</title>
+	</head>
+	<body>
+
+		<div id=header>
+			<p><h1>A Selective Evolution Program</h1></p>
+			<p>Inspired by Richard Dawkins</p>
+		</div>	
+
+		<div id=middle>
+			<div id="text_settings">
+				<ul>
+					<li>Start text:</li>
+					<li>Characters:</li>
+					<li>Target text:</li>
+					<li>output text:</li>
+					<li>generations:</li>
+				</ul>
+			</div>
+			<div id="input_settings">
+				<ul>
+					<li><input type="text" id="start_text" value="methinks it is like a weasel"></li>
+					<li><input type="text" value="abcdefghijklmnopqrstuvwxyz " id="characters"></li>
+					<li><input type="text" value="my final csxx project wohooo" id="target_text"></li>
+					<li><input type="text" id="output_text"></li>
+					<li><input type="text" id="generations"></li>
+				</ul> 
+			</div>
+				<div id="mutation_settings">
+					<ul>
+						<li>Mutation rate:<input id="mutation_rate" type="number" min="0" max="100" value="5">%</li>
+						<li>Offspring per generation<input id="amount_offspring" type"number" value="100"></li>
+						<li>delay<input id="delay" type="range" value="50"></li>
+					</ul>
+				</div>
+		</div>	
+
+		<div id=footer>
+			<input type="button" value="Start!" onclick="main()">
+			<p>This is a final project made by <a href="https://github.com/TheFelixR">Felix Ros&eacute;n</a> for CS50x</p>
+		</div>
+
+	</body>
+</html>	

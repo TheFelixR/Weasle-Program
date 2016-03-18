@@ -1,0 +1,54 @@
+body {
+	text-align: center;
+	background-color: #D8D8D8;
+	font-size: 15px;
+}
+ul {
+	padding: 0;
+    list-style-type: none;
+}
+#header {
+	padding-bottom: 2%;	
+}
+
+#middle {
+	padding-left: 20%;
+	padding-right: 20%;
+}
+	#settings {
+		float: left;
+		text-align: left;
+		width: 60%;
+		padding-right: 0;
+			border-size:2px;
+			border-style:solid;
+			border-color:black;
+	}
+		#text_settings {
+			float: left;	
+			text-align: right;
+			width: 15%;	
+		}
+		#input_settings{		
+			float: left;
+			width: 75%;
+		}
+
+	#mutation_settings {
+		text-align: left;
+		width: 20%;
+		padding:0;
+	}
+		#mutation_rate {
+			width: 30%;	
+		}
+
+		#offspring {
+			width: 30%;
+		}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
