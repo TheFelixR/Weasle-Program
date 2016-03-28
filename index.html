@@ -3,11 +3,16 @@
 <html>
 	<head>
 		<!-- My own CSS -->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <!-- My own JavaScript -->
-        <script src="js/scripts.js"></script>
-        <!-- JQuery -->
-        <script src="js/jquery-2.2.1.min.js"></script>
+        <script src="scripts.js"></script>
+        <!-- character encoding so that it will be easier for mobile devices -->
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- bootstraps css files (CDN) -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	    <!-- Optional Bootstrap theme -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
 		<title>Methinks it is like a weasel</title>
 	</head>
@@ -19,37 +24,43 @@
 		</div>	
 
 		<div id=middle>
-			<div id="text_settings">
+			<div id="settings">
 				<ul>
-					<li>Start text:</li>
-					<li>Characters:</li>
-					<li>Target text:</li>
-					<li>output text:</li>
-					<li>generations:</li>
-				</ul>
-			</div>
-			<div id="input_settings">
-				<ul>
-					<li><input type="text" id="start_text" value="methinks it is like a weasel"></li>
-					<li><input type="text" value="abcdefghijklmnopqrstuvwxyz " id="characters"></li>
-					<li><input type="text" value="my final csxx project wohooo" id="target_text"></li>
+
+					Evolve this string:
+					<li><input type="text" id="start_text" placeholder="(leave empty for random)" autofocus></li>
+					Using these characters:
+					<li><input type="text" id="characters" value=" abcdefghijklmnopqrstuvwxyz"></li>
+					Into this string:
+					<li><input type="text" id="target_text" value="methinks it is like a weasel"></li>
+					Current generation string:
 					<li><input type="text" id="output_text"></li>
-					<li><input type="text" id="generations"></li>
 				</ul> 
 			</div>
+					<div id="current">
+							Current generation:<input type="text" id="generations">
+					</div>
+				
 				<div id="mutation_settings">
 					<ul>
-						<li>Mutation rate:<input id="mutation_rate" type="number" min="0" max="100" value="5">%</li>
-						<li>Offspring per generation<input id="amount_offspring" type"number" value="100"></li>
-						<li>delay<input id="delay" type="range" value="50"></li>
+						<li>Chance of mutation:<input id="mutation_rate" type="number" value="5">%</li>
+						<li>Offspring per generation:<input id="amount_offspring" type"number" value="100"></li>
+						<li>delay:<input id="delay" type="text" max="100" min="1" value="50">ms</li>
 					</ul>
+					<div id="control_handlers">
+						<input type="button" value="Start" onclick="main()">
+						<input type="button" value="Stop" onclick="stop()">
+						<input type="reset" value="Reset" onClick="window.location.reload()">	
+					</div>
 				</div>
 		</div>	
 
 		<div id=footer>
-			<input type="button" value="Start!" onclick="main()">
 			<p>This is a final project made by <a href="https://github.com/TheFelixR">Felix Ros&eacute;n</a> for CS50x</p>
 		</div>
 
+	<!-- jQuery and bootstrap js files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</body>
 </html>	
