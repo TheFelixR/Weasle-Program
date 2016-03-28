@@ -2,25 +2,41 @@
 var score_met = false;
 // initilize a global  variable so we can keep track of how many generations have passed
 var generations = 0;
-
 //checks if the program has ben run
 var start = false;
 
-// stores the inputed value in the correct variables
 function main()
-{
-	//get the start text
-	var start_text = document.getElementById("start_text").value;
-	//get target text
+{	
+	// give target text
 	var target_text = document.getElementById("target_text").value;
-	// get characters to use for modifying string
+	// get characters
 	var characters = document.getElementById("characters").value;
+	// get the start text
+	var start_text = document.getElementById("start_text").value;
+	// if empty
+	if(!start_text)
+	{
+		start_text = randomStart_text(target_text, characters);
+		document.getElementById("start_text").value = start_text;
+	}
 	// get the mutation rate
 	var mutation_rate = document.getElementById("mutation_rate").value;
+	if(mutation_rate < 0 || mutation_rate > 100)
+	{
+		alert("Mutation rate must be between 0-100");
+		return;
+	}
+
 	// get the amount of offspring for each generation
 	var amount_offspring = document.getElementById("amount_offspring").value;
-	// get the delay between each generation call
+	// get the delay between each generatin
 	var delay = document.getElementById("delay").value;
+
+	if(start_text.length !== target_text.length)
+	{
+		alert("The start text and target must be of equal length!");
+		return;
+	}
     
     // reset if program is run again
     if (start == true)
@@ -42,11 +58,16 @@ function main()
 	    {
 	        clearInterval(interval);
 	    }
+        if (stop.called)
+    	{
+    		clearInterval(interval);
+   		}
 	}, delay);
 
+	// so that we know that the program has been run atleast once
 	start = true;
 }
-	
+
 // takes a string and "evolves" it one generation
 function generation(input_text, characters, amount_offspring, mutation_rate, target_text) 
 {
@@ -84,7 +105,6 @@ function generation(input_text, characters, amount_offspring, mutation_rate, tar
 
 	// increment generations
 	generations++;
-
 	// return the highest scoring offspring of this generation
 	return best_offspring.string;
 }
@@ -133,20 +153,26 @@ function setCharAt(str,index,chr)
     	return str.substr(0,index) + chr + str.substr(index+1);
 }
 
-// some error checking for mutation rate 
-// NOT DONE
-function error_check(mutaion_rate)
+// returns a set of random characters to use in start text
+function randomStart_text(string, char)
 {
-	// if mutation rate is higher then 100(%) set it to 100
-	if (mutation_rate > 100)
-		mutation_rate = 100;
-	// if mustation rate is lower then 0(%) set it to 0
-	else if (mutation_rate < 0)
-		mutation_rate = 0;
-	// if nothing no mutation rate is chosen set it to defult value (5%)
-	else if (mutation_rate === "")
-		mutation_rate = 5;
+	var randomString = "";
+	if (string.length >= 1)
+	{
+		for( var i = 0; i<string.length;i++)
+		{	
+			randomString += char.charAt(Math.floor(Math.random() * char.length));
+		}
+		return randomString;
+	}
+	else
+	{
+		return;
+	}
+}
 
-	return mutation_rate
-
+// stops exectuion
+function stop()
+{
+	stop.called = true;
 }
