@@ -1,0 +1,36 @@
+.input-group {
+	width: 50%;
+}
+
+#general .input-group-addon {
+	width: 250px;
+}
+
+#settings .input-group-addon {
+	width: 100px;
+}	
+
+#header {
+	height: 100px;
+	top: 0;
+}
+
+#footer {
+	height: 100px;
+	bottom: 0;
+	padding-top: 30px;
+	display: table;
+	margin: 0 auto;
+	}
+
+
+#middle {
+	height: 100%;
+	margin-bottom: 30px;
+}
+
+.btn-group {
+	padding-top: 30px;
+    display: table;
+    margin: 0 auto;
+}
