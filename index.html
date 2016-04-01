@@ -2,17 +2,23 @@
 
 <html>
 	<head>
-		<!-- My own CSS -->
-        <link rel="stylesheet" type="text/css" href="style.css">
+    	<!-- jQuery and bootstrap js files -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <!-- My own JavaScript -->
-        <script src="scripts.js"></script>
+        <script type="text/javascript" src="handler.js"></script>
+        <script type="text/javascript" src="functions.js"></script>
         <!-- character encoding so that it will be easier for mobile devices -->
         <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- bootstraps css files (CDN) -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<!-- my costum bootstrap css -->
+	    <link rel="stylesheet" type="text/css" href="custom.css">
 	    <!-- Optional Bootstrap theme -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    	<!-- favicon -->
+    	<link href='favicon' type='image/x-icon'/ >
 
 		<title>Methinks it is like a weasel</title>
 	</head>
@@ -24,43 +30,81 @@
 		</div>	
 
 		<div id=middle>
-			<div id="settings">
-				<ul>
-
-					Evolve this string:
-					<li><input type="text" id="start_text" placeholder="(leave empty for random)" autofocus></li>
-					Using these characters:
-					<li><input type="text" id="characters" value=" abcdefghijklmnopqrstuvwxyz"></li>
-					Into this string:
-					<li><input type="text" id="target_text" value="methinks it is like a weasel"></li>
-					Current generation string:
-					<li><input type="text" id="output_text"></li>
-				</ul> 
-			</div>
-					<div id="current">
-							Current generation:<input type="text" id="generations">
-					</div>
-				
-				<div id="mutation_settings">
-					<ul>
-						<li>Chance of mutation:<input id="mutation_rate" type="number" value="5">%</li>
-						<li>Offspring per generation:<input id="amount_offspring" type"number" value="100"></li>
-						<li>delay:<input id="delay" type="text" max="100" min="1" value="50">ms</li>
-					</ul>
-					<div id="control_handlers">
-						<input type="button" value="Start" onclick="main()">
-						<input type="button" value="Stop" onclick="stop()">
-						<input type="reset" value="Reset" onClick="window.location.reload()">	
-					</div>
+			<!-- INPUTS/OUTPUTS -->
+			<div id="general">
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon">Evolve this string:</span>
+					<input type="text" id="start_text" class="form-control" placeholder="(leave empty for random)" autofocus>
 				</div>
-		</div>	
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon">Using these characters:</span>
+					<input type="text" id="characters" class="form-control" value=" abcdefghijklmnopqrstuvwxyz">
+				</div>
 
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon">Into this string:</span>
+					<input type="text" id="target_text" class="form-control" value="methinks it is like a weasel">
+				</div>
+
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon">Best offspring:</span>
+					<input type="text" id="output_text" class="form-control">
+				</div>	
+
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon">Generation:</span>
+					<input type="text" id="generations" class="form-control" value="0">
+				</div>
+			</div>
+			<!-- BUTTONS -->
+			<div class="btn-group">
+				<button class="btn btn-primary btn-lg" type="button" id="start"><span class="glyphicon glyphicon-play"></button>
+				<button class="btn btn-primary btn-lg" type="button" id="stop"><span class="glyphicon glyphicon-pause"></button>
+				<!--window.location.reload()-->
+				<button class="btn btn-primary btn-lg" type="button" id="reset"><span class="glyphicon glyphicon-refresh"></button>
+					<!-- Button trigger modal -->
+				<button class="btn btn-primary btn-lg" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cog"></button>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">Settings</h4>
+			      </div>
+			      <div class="modal-body">
+					<!-- SETTINGS -->
+					<div id="settings">
+				  		<div class="input-group">
+					  		<span class="input-group-addon">Mutation:</span>
+					  		<input id="mutation_rate" type="number" value="5" class="form-control">
+							<span class="input-group-addon">%</span>
+						</div> <!-- input-group -->	
+
+						<div class="input-group">
+							<span class="input-group-addon">Offspring:</span>
+							<input id="amount_offspring" type"number" value="100" class="form-control">
+							<span class="input-group-addon">/generation</span>
+						</div> <!-- input-group -->	
+
+						<div class="input-group">
+							<span class="input-group-addon">delay:</span>
+							<input id="delay" type="text" max="100" min="1" value="50" class="form-control">
+							<span class="input-group-addon">ms</span>
+						</div> <!-- input-group -->	
+					</div> <!-- /settings -->	
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Return</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div> <!-- middle -->	
+		<hr>
 		<div id=footer>
-			<p>This is a final project made by <a href="https://github.com/TheFelixR">Felix Ros&eacute;n</a> for CS50x</p>
+			<p><b>This is a final project made by <a href="https://github.com/TheFelixR">Felix Ros&eacute;n </a>for CS50x</b></p>
 		</div>
-
-	<!-- jQuery and bootstrap js files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</body>
 </html>	
