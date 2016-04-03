@@ -2,13 +2,12 @@
 function generation(input_text, characters, target_text, mutation_rate, amount_offspring) 
 {
 	// array to store all this generations offspring
-	var generationObject = [{string:"", score: 0}];
+	var generationObject = [];
 	var evolved_string = "";
 	var best_offspring = {string:"", score: 0};
 
 	// "load" the offspring into an array, check each offspring if it mutates and then score it.
-	for(var i = 0; i < amount_offspring; i++)
-	{
+	for(var i = 0; i < amount_offspring; i++) {
 		evolved_string = evolve(input_text, characters, mutation_rate)
 		generationObject.push({
    			string: evolved_string,
@@ -16,18 +15,15 @@ function generation(input_text, characters, target_text, mutation_rate, amount_o
     	});
 
 		// if there are more then 2 elements in the object array. Check if the current offspring has a higher score then the previous one.
-		if (generationObject.length > 1)
-		{
+		if (generationObject.length > 1) {
 			// if it does. Its the best offspring
-	    	if (generationObject[i].score > best_offspring.score)
-	    	{
+	    	if (generationObject[i].score > best_offspring.score) {
 	    		best_offspring.string = generationObject[i].string;
 	    		best_offspring.score = generationObject[i].score;
 	    	}
     	}
     	// if there only is one offspring. Its the best, by defult.
-    	else
-    	{
+    	else {
     		best_offspring.string = generationObject[i].string;
     		best_offspring.score = generationObject[i].score;
 		}
@@ -53,7 +49,6 @@ function evolve(offspring, characters, mutation_rate)
 			// changes a random character in the offspring to the random character that was generated
 			offspring = setCharAt(offspring, randomNumber, randomCharacter);
 		}
-
 	return offspring;
 }
 
