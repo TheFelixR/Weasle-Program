@@ -72,7 +72,6 @@ $(document).ready(function() {
    			
 			document.getElementById("output_text").value = "";
 			document.getElementById("start_text").value = "";
-			start_text = document.getElementById("start_text").value;
 			document.getElementById("characters").value = " abcdefghijklmnopqrstuvwxyz";
 			document.getElementById("target_text").value = target_text;
 			document.getElementById("generations").value = generations;
