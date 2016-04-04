@@ -68,23 +68,15 @@ $(document).ready(function() {
 		    	score_met = false;
 		    	generations = 0;
 		    	//best_offspring = generation(start_text, characters, target_text, mutation_rate, amount_offspring, delay);
-	   			startedOnce = false;
-
-	   			// if program is paused while reseted, reset everything
-				if (start === false) {
-					document.getElementById("output_text").value = "";
-					document.getElementById("start_text").value = "";
-				}
-				// if not simply reset everything but start text
-				else{
-					document.getElementById("start_text").value = start_text;
-				}
-
-				document.getElementById("characters").value = " abcdefghijklmnopqrstuvwxyz";
-				document.getElementById("target_text").value = target_text;
-				document.getElementById("generations").value = generations;
-				document.getElementById("mutation_rate").value = 5;
-				document.getElementById("amount_offspring").value = 100;
-				document.getElementById("delay").value = 50;
+   			startedOnce = false;
+   			
+			document.getElementById("output_text").value = "";
+			document.getElementById("start_text").value = "";
+			document.getElementById("characters").value = " abcdefghijklmnopqrstuvwxyz";
+			document.getElementById("target_text").value = target_text;
+			document.getElementById("generations").value = generations;
+			document.getElementById("mutation_rate").value = 5;
+			document.getElementById("amount_offspring").value = 100;
+			document.getElementById("delay").value = 50;
 		});
 });
