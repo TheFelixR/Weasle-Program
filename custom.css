@@ -18,6 +18,9 @@
 #output_text {
 	background-color: white;
 }
+#generations {
+	background-color: white;
+}
 
 #settings .input-group-addon {	
 	width: 100px;
